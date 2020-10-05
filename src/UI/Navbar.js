@@ -3,8 +3,12 @@ import './Navbar.css';
 import {Link} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import{useStateValue} from '../StateProvider/StateProvider';
 
 const Navbar = () => {
+  //destructiring the object state, since it's an object I can destructured it and pull what I need, in this case basket
+  const [{basket}, dispatch] = useStateValue();
+  console.log(basket,  'basket');
 
   return <nav className="header">
 
@@ -57,7 +61,7 @@ const Navbar = () => {
       <div className="header__optionBasket">
 
       <ShoppingBasketIcon/>
-        <span className="header__optionLineTwo header__basketCount" >0</span>
+        <span className="header__optionLineTwo header__basketCount" >{basket?.length}</span>
 
       </div>
 

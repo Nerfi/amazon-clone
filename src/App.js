@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from '../src/UI/Navbar';
 import Home from '../src/Components/Home';
+import CheckOut from '../src/Components/CheckOut';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
         <Route path="/checkout">
         <Navbar/>
+        <CheckOut/>
 
         </Route>
 
