@@ -23,11 +23,11 @@ const Product = ({id, title, image, price, rating}) => {
 
   return <div className="product">
   <div className="product__info">
-      <p>title</p>
+      <p>{title}</p>
 
       <p className="product__price">
-        <small>$</small>
-       <strong>price $$</strong>
+        <small>{price}$</small>
+       <strong> $$</strong>
       </p>
 
       <div className="product__rating">
@@ -42,7 +42,7 @@ const Product = ({id, title, image, price, rating}) => {
 
   </div>
 
-    <img src="https://images.unsplash.com/photo-1600009274776-5422e05f1c55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="img prop"/>
+    <img src={image} alt="img prop"/>
     <button onClick={addToBasket}>add to basket</button>
   </div>
 };

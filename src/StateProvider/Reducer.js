@@ -1,5 +1,14 @@
 export const initialState = {
-  basket: [],
+  basket: [{
+
+    id: "sad4fa65sg46a4fg6a46fg",
+    title: 'Iphone XII',
+    rating: 2,
+    price: 5248,
+    image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+
+
+  }],
   user: null,
 };
 
@@ -20,6 +29,10 @@ const reducer = (state, action) => {
 
       break;
     case 'REMOVE_FROM_BASKET':
+    return {
+      ...state,
+
+    }
     //logic for removing the item from the basket
 
       break;
