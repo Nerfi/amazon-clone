@@ -4,11 +4,17 @@ import {Link} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import{useStateValue} from '../StateProvider/StateProvider';
+import auth from '../Components/firebase';
 
 const Navbar = () => {
   //destructiring the object state, since it's an object I can destructured it and pull what I need, in this case basket
-  const [{basket}, dispatch] = useStateValue();
-  console.log(basket,  'basket');
+  const [{basket, user}] = useStateValue();
+
+  const login = () => {
+    if(user) {
+      auth.signOut();
+    }
+  }
 
   return <nav className="header">
 
@@ -28,11 +34,11 @@ const Navbar = () => {
 
   <div className="header__nav">
 
-    <Link to="/login" className="header__link">
+    <Link to={!user && "/login"} className="header__link">
 
-       <div className="header__option">
-       <span className="header__optionLineOne" > hello user</span>
-        <span className="header__optionLineTwo">Sign In</span>
+       <div onClick={login} className="header__option">
+         <span className="header__optionLineOne" > Hello { user &&user.email}</span>
+        <span className="header__optionLineTwo"> {user ?  'Sign out' : 'Sign In'}</span>
       </div>
 
     </Link>
