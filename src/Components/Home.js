@@ -11,7 +11,7 @@ const Home = () => {
       id="46546sd4a654"
       title="the lean startup"
       image="https://images.unsplash.com/photo-1600009274776-5422e05f1c55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
-      price="39"
+      price={52.80}
       rating="5"
       />
 
@@ -20,7 +20,7 @@ const Home = () => {
       title="Iphone XII"
       image="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
       rating="5"
-      price="15204"
+      price={152.02}
       />
     </div>
 
