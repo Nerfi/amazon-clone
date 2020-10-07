@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     //creating a listener in order to know when the user sign in or sign out
    const unsuscribe =  auth.onAuthStateChanged((authUser) => {
+
       if(authUser) {
         //the user is log in
         dispatch({
@@ -22,7 +23,7 @@ function App() {
           user: authUser
         })
 
-      }else {
+      } else {
         //the user is logged out
         dispatch({
           type: "SET_USER",

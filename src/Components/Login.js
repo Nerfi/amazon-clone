@@ -25,6 +25,7 @@ const Login = () => {
 
   const register = (e) => {
     e.preventDefault();
+
     auth.createUserWithEmailAndPassword(email, password)
       .then(auth => {
         history.push("/");
@@ -42,6 +43,7 @@ const Login = () => {
     </Link>
 
     <div className="login__container">
+      {error && error}
       <h1>Sign in</h1>
 
       <form>

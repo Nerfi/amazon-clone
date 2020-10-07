@@ -3,18 +3,9 @@ export const getBasketTotal = (basket) =>
 basket?.reduce((amount,item) => item.price + amount,0);
 
 
-
+//initial state layer
 export const initialState = {
-  basket: [{
-
-    id: "sad4fa65sg46a4fg6a46fg",
-    title: 'Iphone XII',
-    rating: 2,
-    price: 5248,
-    image: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-
-
-  }],
+  basket: [],
   user: null,
 };
 

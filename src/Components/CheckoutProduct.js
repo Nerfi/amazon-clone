@@ -1,6 +1,7 @@
 import React from 'react';
 import './CheckoutProduct.css';
 import {useStateValue} from '../StateProvider/StateProvider';
+import {BsStar} from 'react-icons/bs';
 
 
 const CheckoutProduct = ({id, title, price, rating, image}) => {
@@ -33,7 +34,7 @@ const CheckoutProduct = ({id, title, price, rating, image}) => {
           Array(rating)
           .fill()
           .map((_) => (
-            <p>Here goes an start icon</p>
+           <BsStar/>
           ))
         }
       </div>

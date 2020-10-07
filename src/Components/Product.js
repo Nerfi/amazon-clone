@@ -1,10 +1,11 @@
 import React from 'react';
 import './Product.css';
 import  {useStateValue} from '../StateProvider/StateProvider';
+import {BsStar} from 'react-icons/bs';
 
 const Product = ({id, title, image, price, rating}) => {
 
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket, user}, dispatch] = useStateValue();
 
 
   const addToBasket = () => {
@@ -35,7 +36,7 @@ const Product = ({id, title, image, price, rating}) => {
           Array(rating)
           .fill()
           .map((_) => (
-            <p>Here goes an start icon</p>
+           <BsStar/>
           ))
         }
       </div>
@@ -43,7 +44,10 @@ const Product = ({id, title, image, price, rating}) => {
   </div>
 
     <img src={image} alt="img prop"/>
-    <button onClick={addToBasket}>add to basket</button>
+    {
+      user ? <button onClick={addToBasket}>add to basket</button> : null
+    }
+
   </div>
 };
 
