@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import{useStateValue} from '../StateProvider/StateProvider';
-import auth from '../Components/firebase';
+import {auth} from '../Components/firebase';
 
 const Navbar = () => {
   //destructiring the object state, since it's an object I can destructured it and pull what I need, in this case basket

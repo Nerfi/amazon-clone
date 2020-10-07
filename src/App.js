@@ -6,7 +6,8 @@ import Home from '../src/Components/Home';
 import CheckOut from '../src/Components/CheckOut';
 import Login from '../src/Components/Login';
 import {useStateValue} from './StateProvider/StateProvider';
-import auth from '../src/Components/firebase';
+import {auth} from '../src/Components/firebase';
+import SingleProduct from '../src/Components/SingleProduct';
 
 function App() {
   //getting the data layer
@@ -47,13 +48,20 @@ function App() {
       <Switch>
 
         <Route path="/checkout">
-        <Navbar/>
-        <CheckOut/>
+          <Navbar/>
+          <CheckOut/>
 
         </Route>
 
         <Route path="/login">
         <Login/>
+
+        </Route>
+
+
+        <Route path="/product/:id" >
+        <Navbar/>
+        <SingleProduct />
 
         </Route>
 

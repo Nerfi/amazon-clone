@@ -2,10 +2,12 @@ import React from 'react';
 import './Product.css';
 import  {useStateValue} from '../StateProvider/StateProvider';
 import {BsStar} from 'react-icons/bs';
+import {Link} from 'react-router-dom';
 
 const Product = ({id, title, image, price, rating}) => {
 
   const [{basket, user}, dispatch] = useStateValue();
+
 
 
   const addToBasket = () => {
@@ -23,23 +25,24 @@ const Product = ({id, title, image, price, rating}) => {
   };
 
   return <div className="product">
-  <div className="product__info">
-      <p>{title}</p>
+    <div className="product__info">
 
-      <p className="product__price">
-        <small>{price}$</small>
-       <strong> $$</strong>
-      </p>
+        <Link className="product__title" to={`/product/${id}`}>{title}</Link>
 
-      <div className="product__rating">
-        {
-          Array(rating)
-          .fill()
-          .map((_) => (
-           <BsStar/>
-          ))
-        }
-      </div>
+        <p className="product__price">
+          <small>{price}$</small>
+         <strong> $$</strong>
+        </p>
+
+        <div className="product__rating">
+          {
+            Array(rating)
+            .fill()
+            .map((_,id) => (
+             <BsStar key={id}/>
+            ))
+          }
+        </div>
 
   </div>
 

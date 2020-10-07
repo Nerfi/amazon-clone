@@ -1,31 +1,54 @@
 import React,{useState,useEffect} from 'react';
 import './Home.css';
 import Product from './Product';
+import {db} from  './firebase';
 
 const Home = () => {
 
   const [products, setProducts] = useState([]);
 
 
+  //example
+    useEffect(() => {
+
+    const fetchProducts = async () => {
+
+       await db.collection("products")
+        .get()
+        .then((snapShot) => {
+
+          const newArray = [];
+
+          snapShot.forEach((doc) => {
+            newArray.push({ id: doc.id, ...doc.data() })
+          })
+
+          setProducts(newArray);
+        })
+    };
+
+    //calling the function, always call it !
+    fetchProducts();
+
+  },[]);
+
   return <div className="home">
     <img className="home__image" src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_es_US_1x._CB432534552_.jpg" alt="background"/>
 
     <div className="home__row">
-      <Product
-      id="46546sd4a654"
-      title="the lean startup"
-      image="https://images.unsplash.com/photo-1600009274776-5422e05f1c55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
-      price={52.80}
-      rating={5}
-      />
+    {
+      products.map(product => (
+        <Product
+        key={product.id}
+        id={product.id}
+        title={product.title}
+        image={product.image}
+        price={product.price}
+        rating={product.rating}
+        />
+      ))
+    }
 
-      <Product
-      id="fsdf4544sdfgdfg"
-      title="Iphone XII"
-      image="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-      rating={3}
-      price={152.02}
-      />
     </div>
 
   </div>
