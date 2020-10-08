@@ -30,8 +30,8 @@ const Product = ({id, title, image, price, rating}) => {
         <Link className="product__title" to={`/product/${id}`}>{title}</Link>
 
         <p className="product__price">
-          <small>{price}$</small>
-         <strong> $$</strong>
+
+         <strong> {price}$$</strong>
         </p>
 
         <div className="product__rating">

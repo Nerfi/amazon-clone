@@ -54,7 +54,7 @@ const Login = () => {
         <button onClick={login} type="submit" className="login__signInButton">Sign in </button>
       </form>
 
-      <p>lorem inpu</p>
+      <p>Al continuar, aceptas las Condiciones de uso y el Aviso de privacidad de Amazon.</p>
       <button onClick={register} className="login__registerButton">create your amazon account </button>
     </div>
   </div>

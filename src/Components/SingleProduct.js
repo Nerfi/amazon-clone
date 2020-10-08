@@ -5,26 +5,32 @@ import { useRouteMatch } from "react-router-dom";
 import  './SingleProduct.css';
 import {BsStar} from 'react-icons/bs';
 import {useStateValue} from '../StateProvider/StateProvider';
+import Spinner from '../../src/UI/Spinner';
 
 const SingleProduct = (props) => {
 
   const [singleProduct, setProduct ] = useState({});
   const [error, setError] = useState(null);
   const {params} = useRouteMatch();
+  const [{ basket, user}, dispatch] = useStateValue();
+  const [loading, setLoading] = useState(false);
 
-   const [{basket, user}, dispatch] = useStateValue();
 
-  console.log(dispatch, 'dispatch')
+  const {title, image, rating, price, description, id} = singleProduct;
+
 
   useEffect(() => {
 
     const fetchSingleProduct = async () => {
 
+      setLoading(true);
+
       await db.collection("products")
         .doc(params.id)
         .get()
         .then(doc => {
-          if(doc.exists) setProduct(doc.data());
+          if(doc.exists) setProduct({id: doc.id, ...doc.data()});
+          setLoading(false)
         })
         .catch(e => setError(e.message))
     };
@@ -32,10 +38,10 @@ const SingleProduct = (props) => {
     //calling the function
 
     fetchSingleProduct();
+    //setLoading(!loading)
 
   },[]);
 
-  const {title, image, rating, price, description, id} = singleProduct;
 
   const addToBasket = () => {
 
@@ -51,6 +57,8 @@ const SingleProduct = (props) => {
       })
 
   };
+
+  if(loading) return <Spinner/>
 
   return <div className="singleProduct">
 
@@ -78,7 +86,9 @@ const SingleProduct = (props) => {
          <strong> $$</strong>
         </p>
        <p className="singleProduct__description">{description}</p>
-        <button onClick={addToBasket}>add to basket</button>
+     {
+      user ? <button onClick={addToBasket}>add to basket</button> : null
+     }
 
   </div>
 };
