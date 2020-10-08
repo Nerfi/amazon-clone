@@ -4,6 +4,7 @@ import Product from './Product';
 import { useRouteMatch } from "react-router-dom";
 import  './SingleProduct.css';
 import {BsStar} from 'react-icons/bs';
+import {useStateValue} from '../StateProvider/StateProvider';
 
 const SingleProduct = (props) => {
 
@@ -11,6 +12,9 @@ const SingleProduct = (props) => {
   const [error, setError] = useState(null);
   const {params} = useRouteMatch();
 
+   const [{basket, user}, dispatch] = useStateValue();
+
+  console.log(dispatch, 'dispatch')
 
   useEffect(() => {
 
@@ -31,21 +35,38 @@ const SingleProduct = (props) => {
 
   },[]);
 
+  const {title, image, rating, price, description, id} = singleProduct;
+
+  const addToBasket = () => {
+
+    dispatch({
+        type: 'ADD_TO_BASKET',
+        item: {
+          id,
+          title,
+          image,
+          price,
+          rating
+        }
+      })
+
+  };
+
   return <div className="singleProduct">
 
       {error && error}
 
      <div className="product__info">
 
-       <h2>{singleProduct.title}</h2>
+       <h2>{title}</h2>
 
     </div>
-       <img src={singleProduct.image} alt=""/>
+       <img src={image} alt=""/>
 
 
         <div className="product__rating">
           {
-            Array(singleProduct.rating)
+            Array(rating)
             .fill()
             .map((_,id) => (
              <BsStar key={id}/>
@@ -53,10 +74,11 @@ const SingleProduct = (props) => {
           }
         </div>
         <p className="product__price">
-          <small>{singleProduct.price}$</small>
+          <small>{price}$</small>
          <strong> $$</strong>
         </p>
-       <p className="singleProduct__description">{singleProduct.description}</p>
+       <p className="singleProduct__description">{description}</p>
+        <button onClick={addToBasket}>add to basket</button>
 
   </div>
 };
