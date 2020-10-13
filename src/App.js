@@ -8,6 +8,7 @@ import Login from '../src/Components/Login';
 import {useStateValue} from './StateProvider/StateProvider';
 import {auth} from '../src/Components/firebase';
 import SingleProduct from '../src/Components/SingleProduct';
+import WishesComponent from '../src/Components/Wishes';
 
 function App() {
   //getting the data layer
@@ -62,6 +63,12 @@ function App() {
         <Route path="/product/:id" >
         <Navbar/>
         <SingleProduct />
+
+        </Route>
+
+         <Route path="/wishes" >
+          <Navbar/>
+          <WishesComponent />
 
         </Route>
 

@@ -7,6 +7,7 @@ basket?.reduce((amount,item) => item.price + amount,0);
 export const initialState = {
   basket: [],
   user: null,
+  query: '',
 };
 
 
@@ -55,6 +56,13 @@ const reducer = (state, action) => {
       }
 
       break;
+
+      case 'SEARCH_QUERY':
+        return {
+          ...state,
+          query: action.query
+        }
+        break;
 
       default:
       return state;

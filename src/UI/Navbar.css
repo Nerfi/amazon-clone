@@ -28,8 +28,14 @@
 
 }
 
+form {
+  display: flex;
+  flex:1;
+}
+
 
 .header__searchInput {
+
   height: 12px;
   padding: 10px;
   border: none;

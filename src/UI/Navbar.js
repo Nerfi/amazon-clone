@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Navbar.css';
 import {Link} from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,14 +7,26 @@ import{useStateValue} from '../StateProvider/StateProvider';
 import {auth} from '../Components/firebase';
 
 const Navbar = () => {
-  //destructiring the object state, since it's an object I can destructured it and pull what I need, in this case basket
-  const [{basket, user}] = useStateValue();
+
+  const [{basket, user, query}, dispatch] = useStateValue();
+  const  [queryTerm, setTerm] = useState('');
+
 
   const login = () => {
     if(user) {
       auth.signOut();
     }
   }
+
+const clicked = e => {
+  e.preventDefault();
+
+  return dispatch({
+    type: 'SEARCH_QUERY',
+    query: queryTerm
+  })
+}
+
 
   return <nav className="header">
 
@@ -28,8 +40,17 @@ const Navbar = () => {
   </Link>
 
   <div className="header__search">
-    <input type="text" className="header__searchInput" />
-    <SearchIcon className="header__searchIcon" />
+    <form onSubmit={clicked}>
+        <input
+          type="text"
+          className="header__searchInput"
+         placeholder='search a product...'
+         onChange={e =>  setTerm(e.target.value)}
+         value={queryTerm}
+         />
+        <SearchIcon className="header__searchIcon"/>
+
+    </form>
   </div>
 
   <div className="header__nav">
@@ -53,14 +74,16 @@ const Navbar = () => {
 
     </Link>
 
-    <Link to="/" className="header__link">
+    <Link to="/wishes" className="header__link">
 
-    <div className="header__option">
+      <div className="header__option">
         <span className="header__optionLineOne">Your</span>
-        <span className="header__optionLineTwo">Whises</span>
+        <span className="header__optionLineTwo">Wishes</span>
       </div>
 
+
     </Link>
+
 
     <Link to="/checkout"  className="header__link">
 
