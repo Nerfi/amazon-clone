@@ -28,6 +28,7 @@ const WishesComponent = () => {
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
+                action="wishes"
                 />
               ))}
 

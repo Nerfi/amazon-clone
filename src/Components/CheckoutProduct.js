@@ -4,9 +4,10 @@ import {useStateValue} from '../StateProvider/StateProvider';
 import {BsStar} from 'react-icons/bs';
 
 
-const CheckoutProduct = ({id, title, price, rating, image}) => {
+const CheckoutProduct = ({id, title, price, rating, image, action}) => {
 
    const [{basket}, dispatch] = useStateValue();
+
 
   const removeItem = () => {
     //remove item from basket state
@@ -16,6 +17,17 @@ const CheckoutProduct = ({id, title, price, rating, image}) => {
     })
 
   };
+
+
+  const removeWish = () => {
+
+    dispatch({
+      type: 'REMOVE_FROM_WISHLIST',
+      id: id,
+    });
+
+  };
+
 
   return(
     <div className="checkoutProduct">
@@ -39,7 +51,10 @@ const CheckoutProduct = ({id, title, price, rating, image}) => {
         }
       </div>
 
-      <button onClick={removeItem}>Remove from basket</button>
+      {
+        action === 'checkOut' ? <button onClick={removeItem}>Remove from basket </button> : <button onClick={removeWish}>remove from wish list</button>
+      }
+
 
 
       </div>

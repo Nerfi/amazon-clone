@@ -72,6 +72,25 @@ const reducer = (state, action) => {
           }
           break;
 
+        case 'REMOVE_FROM_WISHLIST':
+        //make  a shallow copy of the old state in order to not to touch it directly
+        let wishList = [...state.wishes];
+        //check to see if wish exists and match the id of the action
+        const wishIndex = state.wishes.findIndex((wishItem) => wishItem.id === action.id);
+        //chwcking if there's a index(wish) , if we find it and if so, we'll remove it from the array, from the copy we made before
+        if(wishIndex >= 0) {
+          wishList.splice(wishIndex, 1);
+        } else {
+          console.log('cant remove it ')
+        }
+
+          return {
+            ...state,
+            wishes: wishList
+
+          }
+          break;
+
       default:
       return state;
   }

@@ -63,6 +63,7 @@ const SingleProduct = (props) => {
 
 
   const addToWishes = () => {
+
     dispatch({
       type: 'ADD_TO_WISHES',
       item: {
