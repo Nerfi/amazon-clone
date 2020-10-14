@@ -40,7 +40,7 @@ const clicked = e => {
   </Link>
 
   <div className="header__search">
-    <form onSubmit={clicked}>
+    <form onSubmit={clicked} className="navbar__form">
         <input
           type="text"
           className="header__searchInput"

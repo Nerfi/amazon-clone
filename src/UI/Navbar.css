@@ -28,7 +28,7 @@
 
 }
 
-form {
+.navbar__form {
   display: flex;
   flex:1;
 }
