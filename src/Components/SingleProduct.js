@@ -7,12 +7,13 @@ import {BsStar} from 'react-icons/bs';
 import {useStateValue} from '../StateProvider/StateProvider';
 import Spinner from '../../src/UI/Spinner';
 
+
 const SingleProduct = (props) => {
 
   const [singleProduct, setProduct ] = useState({});
   const [error, setError] = useState(null);
   const {params} = useRouteMatch();
-  const [{ basket, user}, dispatch] = useStateValue();
+  const [{ basket, user,wishes}, dispatch] = useStateValue();
   const [loading, setLoading] = useState(false);
 
 
@@ -58,7 +59,21 @@ const SingleProduct = (props) => {
 
   };
 
-  if(loading) return <Spinner/>
+  if(loading) return <Spinner/>;
+
+
+  const addToWishes = () => {
+    dispatch({
+      type: 'ADD_TO_WISHES',
+      item: {
+            id,
+          title,
+          image,
+          price,
+          rating
+      }
+    })
+  };
 
   return <div className="singleProduct">
 
@@ -86,9 +101,17 @@ const SingleProduct = (props) => {
          <strong> $$</strong>
         </p>
        <p className="singleProduct__description">{description}</p>
-     {
-      user ? <button onClick={addToBasket}>add to basket</button> : null
-     }
+
+       <div className="auth__rendering">
+
+         {
+          user ? <button onClick={addToBasket}>add to basket</button> : null
+         }
+
+           <i className="fa fa-heart" onClick={addToWishes}/>
+       </div>
+
+
 
   </div>
 };

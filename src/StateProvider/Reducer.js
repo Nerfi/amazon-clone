@@ -8,6 +8,7 @@ export const initialState = {
   basket: [],
   user: null,
   query: '',
+  wishes: [],
 };
 
 
@@ -63,6 +64,13 @@ const reducer = (state, action) => {
           query: action.query
         }
         break;
+
+        case 'ADD_TO_WISHES':
+          return {
+            ...state,
+            wishes: [...state.wishes,action.item]
+          }
+          break;
 
       default:
       return state;
