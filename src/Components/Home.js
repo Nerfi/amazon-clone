@@ -4,6 +4,8 @@ import Product from './Product';
 import {db} from  './firebase';
 import Spinner from '../../src/UI/Spinner';
 import {useStateValue} from '../StateProvider/StateProvider';
+import CarouselComponent from '../../src/UI/Carousel';
+
 
 const Home = () => {
 
@@ -41,7 +43,6 @@ const Home = () => {
     fetchProducts();
 
   },[]);
-
 
 
     //useEffect in order to handle query search
@@ -110,8 +111,8 @@ const Home = () => {
   return <div className="home">
 
         {error && error}
-      <img className="home__image" src="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_45M_es_US_1x._CB432534552_.jpg" alt="background"/>
 
+       <CarouselComponent />
       <div className="home__row">
         {items}
 

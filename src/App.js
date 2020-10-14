@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Navbar from '../src/UI/Navbar';
@@ -9,6 +10,7 @@ import {useStateValue} from './StateProvider/StateProvider';
 import {auth} from '../src/Components/firebase';
 import SingleProduct from '../src/Components/SingleProduct';
 import WishesComponent from '../src/Components/Wishes';
+
 
 function App() {
   //getting the data layer
