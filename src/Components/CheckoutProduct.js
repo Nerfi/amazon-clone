@@ -12,6 +12,7 @@ const CheckoutProduct = ({id, title, price, rating, image, action}) => {
   const removeItem = () => {
     //remove item from basket state
     dispatch({
+
       type: 'REMOVE_FROM_BASKET',
       id: id,
     })
@@ -52,7 +53,7 @@ const CheckoutProduct = ({id, title, price, rating, image, action}) => {
       </div>
 
       {
-        action === 'checkOut' ? <button onClick={removeItem}>Remove from basket </button> : <button onClick={removeWish}>remove from wish list</button>
+        action === 'checkOut' || 'payment' ? <button onClick={removeItem}>Remove from basket </button> : <button onClick={removeWish}>remove from wish list</button>
       }
 
 

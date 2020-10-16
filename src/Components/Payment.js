@@ -1,6 +1,9 @@
 import React from 'react';
 import {useStateValue} from '../StateProvider/StateProvider';
 import CheckoutProduct from  './CheckoutProduct';
+import './Payment.css';
+import {Link} from 'react-router-dom';
+
 const Payment = () => {
 
   const [{user, basket},dispatch] = useStateValue();
@@ -10,6 +13,14 @@ const Payment = () => {
     <div className="payment">
 
       <div className="payment__container">
+
+      <h1>
+
+      checkout (
+        <Link to="/checkout">{basket?.length}items</Link>
+        )
+
+      </h1>
 
         <div className="payment__section">
 
@@ -27,25 +38,31 @@ const Payment = () => {
 
 
         <div className="payment__section">
+
           <div className="payment__title">
           <h3>review items and delivery</h3>
           </div>
 
-          <div className="payment__item">
+          <div className="payment__items">
+
             {basket.map(item => (
               <CheckoutProduct
+              key={item.id}
               id={item.id}
               title={item.title}
               image={item.image}
               price={item.price}
               rating={item.rating}
+              action='payment'
               />
             ))}
+
           </div>
         </div>
 
 
         <div className="payment__section">
+        Aqui supongo tendre que  renderizar mi componente de stripe que cree ayer
 
         </div>
 
