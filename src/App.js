@@ -10,6 +10,7 @@ import {useStateValue} from './StateProvider/StateProvider';
 import {auth} from '../src/Components/firebase';
 import SingleProduct from '../src/Components/SingleProduct';
 import WishesComponent from '../src/Components/Wishes';
+import Payment from '../src/Components/Payment';
 
 
 function App() {
@@ -58,6 +59,13 @@ function App() {
 
         <Route path="/login">
         <Login/>
+
+        </Route>
+
+        <Route path="/payment">
+
+          <Navbar/>
+          <Payment/>
 
         </Route>
 
