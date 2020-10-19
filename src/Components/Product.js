@@ -9,7 +9,6 @@ import ShoppingCard from '../UI/ShoppingCard';
 const Product = ({id, title, image, price, rating}) => {
 
   const [{basket, user}, dispatch] = useStateValue();
-  //for testing
 
   const addToBasket = () => {
       //add item to basket, this function is not implemented yey ad onClick prop

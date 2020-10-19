@@ -3,6 +3,7 @@ import {useStateValue} from '../StateProvider/StateProvider';
 import CheckoutProduct from  './CheckoutProduct';
 import './Payment.css';
 import {Link} from 'react-router-dom';
+import Stripe from "../Stripe/StripeContainer";
 
 const Payment = () => {
 
@@ -62,7 +63,8 @@ const Payment = () => {
 
 
         <div className="payment__section">
-        Aqui supongo tendre que  renderizar mi componente de stripe que cree ayer
+
+          <Stripe/>
 
         </div>
 

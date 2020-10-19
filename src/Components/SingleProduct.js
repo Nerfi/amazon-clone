@@ -6,9 +6,6 @@ import  './SingleProduct.css';
 import {BsStar} from 'react-icons/bs';
 import {useStateValue} from '../StateProvider/StateProvider';
 import Spinner from '../../src/UI/Spinner';
-  //stripe code
-import Stripe from "../Stripe/StripeContainer";
-
 
 
 const SingleProduct = (props) => {
@@ -113,9 +110,7 @@ const SingleProduct = (props) => {
          }
 
            <i className="fa fa-heart" onClick={addToWishes}/>
-           <Stripe/>
        </div>
-
 
 
   </div>
