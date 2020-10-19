@@ -11,6 +11,7 @@ import {auth} from '../src/Components/firebase';
 import SingleProduct from '../src/Components/SingleProduct';
 import WishesComponent from '../src/Components/Wishes';
 import Payment from '../src/Components/Payment';
+import Orders from '../src/Components/Orders';
 
 
 function App() {
@@ -54,6 +55,13 @@ function App() {
         <Route path="/checkout">
           <Navbar/>
           <CheckOut/>
+
+        </Route>
+
+
+        <Route path="/orders">
+          <Navbar/>
+          <Orders/>
 
         </Route>
 

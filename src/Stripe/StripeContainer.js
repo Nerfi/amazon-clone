@@ -3,9 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./CheckoutForm";
 
-
-//this is my HOC component
-
 const PUBLIC_KEY =  process.env.REACT_APP_STRIPE_PUBLIC_KEY
 
 const stripeTestPromise = loadStripe(PUBLIC_KEY);

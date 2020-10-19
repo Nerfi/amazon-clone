@@ -5,7 +5,7 @@ import CurrencyFormat from 'react-currency-format';
 import {useStateValue} from '../StateProvider/StateProvider';
 import {getBasketTotal} from '../../src/StateProvider/Reducer';
 import {useHistory} from 'react-router-dom';
-
+import {db} from '../../src/Components/firebase';
 
 
 export const CheckoutForm = () => {
@@ -31,6 +31,8 @@ export const CheckoutForm = () => {
 
   };
 
+  //delete this function when checked all it's working
+
   const handleSubmit = async (event) => {
 
     event.preventDefault();
@@ -55,21 +57,69 @@ export const CheckoutForm = () => {
         );
 
         console.log("Stripe 35 | data", response.data.success);
-        if (response.data.success) {
+        /*if (response.data.success) {
           console.log("CheckoutForm.js 25 | payment successful!");
-        }
-        setProcessing(false)
-        //after the transaction inf confirmed I should send the user to orders page, it's a good UI/UX
+        }*/
+        setProcessing(false);
+        history.replace("/orders");
       } catch (error) {
         setError(error);
       }
     } else {
       setError(error.message);
     }
+
+  };
+
+  //new Function
+
+  const handleSubmit2 = async (e) => {
+
+    e.preventDefault();
+    setProcessing(true);
+
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+    });
+
+    if(!error) {
+
+      try {
+        const {id} = paymentMethod;
+        const response = await axios.post(
+          "http://localhost:8080/stripe/charge",
+          {
+            amount: getBasketTotal(basket) * 100,
+            id: id,
+          }
+        ).then(response => {
+
+          db.collection('users')
+            .doc(user?.uid)
+            .collection('orders')
+            .doc(id)
+            .set({
+              basket: basket,
+              amount:  getBasketTotal(basket) * 100
+            })
+
+
+
+          setSucceeded(true);
+          setError(null);
+          setProcessing(false);
+
+          history.replace("/orders")
+        })
+      } catch (error) {
+        setError(error);
+      }
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ width: 400 }}>
+    <form onSubmit={handleSubmit2} style={{ width: 400 }}>
       <h3 style={{color: 'red'}}>{error && error}</h3>
       <CardElement onChange={handleChange}/>
       <div className="price__container">
@@ -94,7 +144,7 @@ export const CheckoutForm = () => {
       <button disabled={processing || disable || succeeded}>
        <span>{processing ? "Processing..." : "Buy now "}</span>
       </button>
-       {error && error}
+
     </form>
   );
 };
