@@ -18,7 +18,7 @@ const Orders = () => {
 
       if(user) {
 
-       db
+      await  db
         .collection("users")
         .doc(user.uid)
         .collection("orders")
