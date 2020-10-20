@@ -14,7 +14,6 @@ const Orders = () => {
   useEffect(() => {
 
     const fetchingOrders = async () => {
-      //not working
 
       if(user) {
 
@@ -40,13 +39,9 @@ const Orders = () => {
 
   },[user]);
 
-
-
-  console.log(orders, 'orders');
-
   return(
     <div className="orders">
-    <h1>Your orders</h1>
+    <h1>{orders.length > 0 ? "Your orders" : "No orders yet" }</h1>
     <div className="orders__order">
       {orders.map(order => (
         <Order order={order}/>

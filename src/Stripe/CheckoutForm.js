@@ -31,46 +31,6 @@ export const CheckoutForm = () => {
 
   };
 
-  //delete this function when checked all it's working
-
-  const handleSubmit = async (event) => {
-
-    event.preventDefault();
-    setProcessing(true);
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: elements.getElement(CardElement),
-    });
-
-    if (!error) {
-
-      console.log("Stripe 23 | token generated!", paymentMethod);
-      try {
-        const { id } = paymentMethod;
-        const response = await axios.post(
-          "http://localhost:8080/stripe/charge",
-          {
-            amount: getBasketTotal(basket) * 100,
-            id: id,
-          }
-        );
-
-        console.log("Stripe 35 | data", response.data.success);
-        /*if (response.data.success) {
-          console.log("CheckoutForm.js 25 | payment successful!");
-        }*/
-        setProcessing(false);
-        history.replace("/orders");
-      } catch (error) {
-        setError(error);
-      }
-    } else {
-      setError(error.message);
-    }
-
-  };
-
   //new Function
 
   const handleSubmit2 = async (e) => {
