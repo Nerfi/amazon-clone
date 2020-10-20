@@ -110,6 +110,10 @@ export const CheckoutForm = () => {
           setError(null);
           setProcessing(false);
 
+          dispatch({
+            type: 'EMPTY_BASKET'
+          })
+
           history.replace("/orders")
         })
       } catch (error) {

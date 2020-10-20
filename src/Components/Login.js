@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Login.css';
 import {Link, useHistory} from 'react-router-dom';
-import {auth} from  './firebase';
+import {auth, db} from  './firebase';
 
 
 const Login = () => {
@@ -14,23 +14,36 @@ const Login = () => {
 
 
   const login = (e) => {
+
     e.preventDefault();
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then(auth => {
-        history.push("/");
-      })
-      .catch(e => setError(e.message))
+       auth
+          .signInWithEmailAndPassword(email, password)
+          .then(auth => {
+              history.push('/')
+            })
+            .catch(error => setError(error.message))
   };
 
   const register = (e) => {
+
     e.preventDefault();
 
-    auth.createUserWithEmailAndPassword(email, password)
-      .then(auth => {
-        history.push("/");
+  auth
+     .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+       // it successfully created a new user with email and password
+        if (auth) {
+            history.push('/')
+            }
+        //creating a user collection in order to store the users on it
+          db.collection("users").doc(auth().currentUser.uid).set({
+            email
+
+          })
+
       })
-      .catch(error => setError(error.message))
+     .catch(error => setError(error.message))
   };
 
   return <div className="login">

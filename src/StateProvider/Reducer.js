@@ -33,6 +33,12 @@ const reducer = (state, action) => {
 
     };
 
+    case 'EMPTY_BASKET':
+      return {
+        ...state,
+        basket: []
+      }
+
       break;
 
     case 'REMOVE_FROM_BASKET':

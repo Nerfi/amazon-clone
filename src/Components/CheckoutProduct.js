@@ -47,7 +47,7 @@ const CheckoutProduct = ({id, title, price, rating, image, action}) => {
           Array(rating)
           .fill()
           .map((_) => (
-           <BsStar/>
+           <BsStar key={id}/>
           ))
         }
       </div>
