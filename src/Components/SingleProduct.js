@@ -36,8 +36,6 @@ const SingleProduct = (props) => {
         .catch(e => setError(e.message))
     };
 
-    //calling the function
-
     fetchSingleProduct();
     //setLoading(!loading)
 

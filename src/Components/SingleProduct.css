@@ -32,3 +32,13 @@
 .product__price {
   font-size: 25px;
 }
+
+.auth__rendering {
+ display: flex;
+align-items: center;
+
+}
+
+.auth__rendering > .fa {
+  padding-left: 15px;
+}
