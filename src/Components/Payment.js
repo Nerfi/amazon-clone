@@ -31,8 +31,8 @@ const Payment = () => {
 
           <div className="payment__address">
             <p>{user?.email} </p>
-            <p>123 no adrres</p>
-            <p>search for adrres on docs, no in this tutorial </p>
+            <p>742 Evergreen Terrace </p>
+            <p>   Springfield </p>
           </div>
 
         </div>

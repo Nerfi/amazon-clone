@@ -31,8 +31,6 @@ export const CheckoutForm = () => {
 
   };
 
-  //new Function
-
   const handleSubmit2 = async (e) => {
 
     e.preventDefault();
@@ -63,8 +61,6 @@ export const CheckoutForm = () => {
               basket: basket,
               amount:  getBasketTotal(basket) * 100
             })
-
-
 
           setSucceeded(true);
           setError(null);

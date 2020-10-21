@@ -36,8 +36,8 @@ const SingleProduct = (props) => {
         .catch(e => setError(e.message))
     };
 
+   setLoading(false)
     fetchSingleProduct();
-    //setLoading(!loading)
 
   },[]);
 
@@ -101,14 +101,16 @@ const SingleProduct = (props) => {
         </p>
        <p className="singleProduct__description">{description}</p>
 
-       <div className="auth__rendering">
+       {
+        user ?
 
-         {
-          user ? <button onClick={addToBasket}>add to basket</button> : null
-         }
+         <div className="auth__rendering">
 
-           <i className="fa fa-heart" onClick={addToWishes}/>
-       </div>
+            <button onClick={addToBasket}>add to basket</button>
+
+             <i className="fa fa-heart" onClick={addToWishes}/>
+         </div> : null
+       }
 
 
   </div>

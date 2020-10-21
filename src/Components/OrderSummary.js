@@ -4,7 +4,7 @@ import {BsStar} from 'react-icons/bs';
 const OrderSummary = ({id, title, image, price, rating}) => {
   return  <div className="orderSummary">
 
-      <img className="orderSummary__image" src={image} alt="checkout__img"/>
+      <img className="orderSummary__image" src={image} alt="checkout__img" style={{width: 100}}/>
 
       <div className="orderSummary__info">
         <p className="orderSummary__title"> <strong>{title}</strong></p>

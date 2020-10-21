@@ -39,13 +39,11 @@ const Home = () => {
         .catch(error => setError(error.message))
     };
 
-    //calling the function, always call it !
-    fetchProducts();
+  fetchProducts();
 
   },[]);
 
 
-    //useEffect in order to handle query search
     useEffect(()=> {
 
       const fetchQuery = async () => {
@@ -105,8 +103,6 @@ const Home = () => {
           />
         ));
       }
-
-      console.log(searchItems,  'response from API')
 
   return <div className="home">
 

@@ -10,8 +10,8 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
 
-
   useEffect(() => {
+
 
     const fetchingOrders = async () => {
 
@@ -26,18 +26,23 @@ const Orders = () => {
                 id: doc.id,
                 data: doc.data()
             })))
+
         ))
+
 
       } else {
         setOrders([]);
 
       }
 
+
     };
 
     fetchingOrders();
 
   },[user]);
+
+
 
   return(
     <div className="orders">
