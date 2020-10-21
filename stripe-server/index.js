@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 require("dotenv").config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_PRODUCTION);
@@ -8,12 +9,12 @@ const buildPath = path.join(__dirname, '..', 'build');
 
 
 const bodyParser = require("body-parser");
-const cors = require("cors");
+//const cors = require("cors");
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
 
 app.use(express.static(buildPath));
 

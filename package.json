@@ -27,7 +27,7 @@
   "build": "react-scripts build && (cd stripe-server && yarn install)",
   "test": "react-scripts test",
   "eject": "react-scripts eject",
-  "start": "cd strìpe-server && yarn start"
+  "start": "cd stripe-server && yarn start"
   },
   "eslintConfig": {
     "extends": "react-app"
