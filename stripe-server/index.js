@@ -10,7 +10,7 @@ const buildPath = path.join(__dirname, '..', 'build');
 
 const bodyParser = require("body-parser");
 //const cors = require("cors");
-
+//delete cors because of the tutorial
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
