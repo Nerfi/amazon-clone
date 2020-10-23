@@ -24,10 +24,10 @@
   },
   "scripts": {
    "start-client": "react-scripts start",
-  "build": "react-scripts build && (cd stripe-server && yarn install)",
+  "build": "react-scripts build && (cd stripe-server && npm install)",
   "test": "react-scripts test",
   "eject": "react-scripts eject",
-  "start": "cd stripe-server && yarn start"
+  "start": "cd stripe-server && npm start"
   },
   "eslintConfig": {
     "extends": "react-app"

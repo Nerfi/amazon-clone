@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(buildPath));
 
-app.post("/stripe/charge", cors(), async (req, res) => {
+app.post("/stripe/charge", async (req, res) => {
 
 
   let { amount, id } = req.body;
